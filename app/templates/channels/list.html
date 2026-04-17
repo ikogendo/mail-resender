@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Delivery channels{% endblock %}
+{% block content %}
+<h1>Delivery channels</h1>
+<div class="actions"><a class="btn" href="{{ url_for('channels.create_channel') }}">Create channel</a></div>
+<table>
+  <thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Destination</th><th>Active</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for channel in channels %}
+    <tr>
+      <td>{{ channel.id }}</td><td>{{ channel.name }}</td><td>{{ channel.kind }}</td>
+      <td>{{ channel.destination }}</td><td>{{ 'Yes' if channel.is_active else 'No' }}</td>
+      <td><a href="{{ url_for('channels.edit_channel', channel_id=channel.id) }}">Edit</a></td>
+    </tr>
+    {% else %}<tr><td colspan="6" class="muted">No channels yet</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Mail accounts{% endblock %}
+{% block content %}
+<h1>Mail accounts</h1>
+<div class="actions"><a class="btn" href="{{ url_for('accounts.create_account') }}">Create account</a></div>
+<table>
+  <thead><tr><th>ID</th><th>Name</th><th>From</th><th>SMTP</th><th>Active</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for account in accounts %}
+    <tr>
+      <td>{{ account.id }}</td><td>{{ account.name }}</td><td>{{ account.email_from }}</td>
+      <td>{{ account.smtp_host }}:{{ account.smtp_port }}</td><td>{{ 'Yes' if account.is_active else 'No' }}</td>
+      <td><a href="{{ url_for('accounts.edit_account', account_id=account.id) }}">Edit</a></td>
+    </tr>
+    {% else %}<tr><td colspan="6" class="muted">No accounts yet</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

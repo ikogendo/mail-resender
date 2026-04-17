@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Recent logs{% endblock %}
+{% block content %}
+<h1>Recent EventLog / DeliveryLog</h1>
+<h2>EventLog</h2>
+<table>
+  <thead><tr><th>Time</th><th>Level</th><th>Message</th></tr></thead>
+  <tbody>
+    {% for event in event_logs %}
+      <tr><td>{{ event.created_at }}</td><td>{{ event.level }}</td><td>{{ event.message }}</td></tr>
+    {% else %}<tr><td colspan="3" class="muted">No event logs</td></tr>{% endfor %}
+  </tbody>
+</table>
+
+<h2>DeliveryLog</h2>
+<table>
+  <thead><tr><th>Time</th><th>Channel</th><th>Recipient</th><th>Status</th><th>Error</th></tr></thead>
+  <tbody>
+    {% for delivery in delivery_logs %}
+      <tr>
+        <td>{{ delivery.created_at }}</td><td>{{ delivery.channel }}</td><td>{{ delivery.recipient }}</td>
+        <td>{{ delivery.status }}</td><td>{{ delivery.error or '' }}</td>
+      </tr>
+    {% else %}<tr><td colspan="5" class="muted">No delivery logs</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

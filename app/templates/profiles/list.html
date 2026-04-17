@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Profiles{% endblock %}
+{% block content %}
+<h1>Profiles</h1>
+<div class="actions"><a class="btn" href="{{ url_for('profiles.create_profile') }}">Create profile</a></div>
+<table>
+  <thead><tr><th>ID</th><th>Name</th><th>Active</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for profile in profiles %}
+    <tr>
+      <td>{{ profile.id }}</td><td>{{ profile.name }}</td><td>{{ 'Yes' if profile.is_active else 'No' }}</td>
+      <td><a href="{{ url_for('profiles.edit_profile', profile_id=profile.id) }}">Edit</a></td>
+    </tr>
+    {% else %}<tr><td colspan="4" class="muted">No profiles yet</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

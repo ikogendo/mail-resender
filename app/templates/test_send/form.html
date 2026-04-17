@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Test notification{% endblock %}
+{% block content %}
+<h1>Send test notification</h1>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <label>{{ form.profile_id.label }}{{ form.profile_id() }}</label>
+  <label>{{ form.channel_id.label }}{{ form.channel_id() }}</label>
+  <label>{{ form.recipient.label }}{{ form.recipient() }}</label>
+  <label>{{ form.subject.label }}{{ form.subject() }}</label>
+  <label>{{ form.body.label }}{{ form.body() }}</label>
+  {{ form.submit(class_='btn') }}
+</form>
+{% endblock %}

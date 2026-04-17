@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ page_title }}</h1>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <label>{{ form.name.label }}{{ form.name() }}</label>
+  <label>{{ form.email_from.label }}{{ form.email_from() }}</label>
+  <label>{{ form.smtp_host.label }}{{ form.smtp_host() }}</label>
+  <label>{{ form.smtp_port.label }}{{ form.smtp_port() }}</label>
+  <label>{{ form.username.label }}{{ form.username() }}</label>
+  <label>{{ form.use_tls() }} {{ form.use_tls.label.text }}</label>
+  <label>{{ form.is_active() }} {{ form.is_active.label.text }}</label>
+  {{ form.submit(class_='btn') }}
+</form>
+{% endblock %}
