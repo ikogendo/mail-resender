@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>mailbridge control panel</h1>
+  <form method="post" action="{{ url_for('main.send_test') }}">
+    {{ form.csrf_token }}
+    <label>{{ form.channel.label }} {{ form.channel(size=32) }}</label>
+    <label>{{ form.message.label }} {{ form.message(rows=6, cols=40) }}</label>
+    <button type="submit">Send test message</button>
+  </form>
+{% endblock %}

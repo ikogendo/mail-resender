@@ -1,0 +1,17 @@
+app_name = "mailbridge"
+environment = "development"
+database_url = "sqlite+pysqlite:///./mailbridge.db"
+imap_host = "imap.example.com"
+imap_port = 993
+imap_username = "username"
+imap_password = "password"
+imap_use_ssl = true
+
+telegram_token = ""
+telegram_chat_id = ""
+mattermost_webhook_url = ""
+
+worker_poll_interval_seconds = 30
+metrics_enabled = true
+metrics_path = "/metrics"
+secret_key = "please-change"
