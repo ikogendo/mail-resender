@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    environment:
+      MAILBRIDGE_FLASK_HOST: 0.0.0.0
+      MAILBRIDGE_FLASK_PORT: 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config:/etc/mailbridge
+      - ./logs:/var/log/mailbridge
+      - ./data:/data
+    command: ["python", "-m", "flask", "--app", "app.main:app", "run", "--host=0.0.0.0", "--port=8080"]
+
+  worker:
+    build: .
+    volumes:
+      - ./config:/etc/mailbridge
+      - ./logs:/var/log/mailbridge
+      - ./data:/data
+    command: ["python", "-m", "app.worker"]

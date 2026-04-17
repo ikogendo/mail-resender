@@ -1,0 +1,1 @@
+"""Mailbridge application package."""
